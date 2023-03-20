@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:iot="clr-namespace:iot"
+             x:Class="iot.MainPage"
+             NavigationPage.HasBackButton="False"
+             Title="IOT App"
+           >
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Order="Primary"
+                     Text="Logout"
+                     Priority="0"
+                     Clicked="OnItemClicked" />
+    </ContentPage.ToolbarItems>
+    <ScrollView Padding="0,24,0,0" BackgroundColor="DarkGray">
+        <StackLayout x:Name="stackLayout"  BindableLayout.ItemsSource="{Binding DeviceTypesProperties}" Spacing="8">
+            <BindableLayout.ItemTemplate>
+                <DataTemplate>
+                    <iot:DeviceView 
+                        Margin="16,0,16,0"
+                        CommandParameter="{Binding Item1.name}"
+                        PressedCommand="{Binding Source={x:Reference stackLayout}, Path=BindingContext.PressedCommand}"
+                        ItemsCount="{Binding Item2}"
+                        Title="{Binding Item1.name}"
+                        SubTitle="{Binding Item1.pluralName, StringFormat='All {0}'}"></iot:DeviceView>
+                </DataTemplate>
+            </BindableLayout.ItemTemplate>
+        </StackLayout>
+    </ScrollView>
+
+</ContentPage>

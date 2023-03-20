@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="iot.DeviceView"
+             x:Name="Self"
+            >
+    <Frame x:Name="frame" CornerRadius="10" Background="White" VerticalOptions="Center" HasShadow="True">
+        <Frame.GestureRecognizers>
+            <TapGestureRecognizer Tapped="OnFrameTapped" />
+        </Frame.GestureRecognizers>
+        <ContentView.Content>
+            <StackLayout>
+                <Label TextColor="Black" Text="{Binding Title, Source={x:Reference Self}}" FontAttributes="Bold" FontSize="Subtitle" />
+                <Label TextColor="Gray" FontAttributes="Bold" FontSize="Small">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <FormattedString.Spans>
+                                <Span Text="{Binding SubTitle, Source={x:Reference Self}}"/>
+                                <Span Text="{Binding ItemsCount, StringFormat='({0})', Source={x:Reference Self}}"/>
+                            </FormattedString.Spans>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+            </StackLayout>
+        </ContentView.Content>
+    </Frame>
+</ContentView>

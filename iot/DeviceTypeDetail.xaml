@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="iot.DeviceTypeDetail">
+    <ScrollView Padding="0,24,0,0" BackgroundColor="DarkGray">
+        <StackLayout BindableLayout.ItemsSource="{Binding Devices}" Spacing="8">
+            <BindableLayout.ItemTemplate>
+                <DataTemplate>
+                    <Frame  Margin="16,0,16,0" CornerRadius="10" Background="White" VerticalOptions="Center" HasShadow="True" BindingContext="{Binding}">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                        </Frame.GestureRecognizers>
+                        <StackLayout>
+                            <Label TextColor="Black" Text="{Binding Name}" FontAttributes="Bold" FontSize="Subtitle" />
+                        </StackLayout>
+                    </Frame>
+                </DataTemplate>
+            </BindableLayout.ItemTemplate>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>
